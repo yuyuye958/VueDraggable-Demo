@@ -196,21 +196,25 @@
     .my-input {
       width: 180px;
     }
-    .relation-item-inner {
+    .relation-item {
+      margin-bottom: 0.5em;
       margin-right: 0.5em;
-      position: relative;
-      .close-btn {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 1;
-        display: none;
-      }
-      &:hover {
+      .relation-item-inner {
+        position: relative;
         .close-btn {
-          display: inline-block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 1;
+          display: none;
+        }
+        &:hover {
+          .close-btn {
+            display: inline-block;
+          }
         }
       }
     }
+
   }
 </style>
