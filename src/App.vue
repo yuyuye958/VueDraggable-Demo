@@ -7,7 +7,7 @@
 
         <div class="parameter">
           <p class="parameter-title">参数：</p>
-          <draggable v-model="parameter" :options="{group:{ name:'main', pull:'clone', put:false }}">
+          <draggable v-model="parameter" :options="{group:{ name:'main', pull:'clone', put:false }}" @start="moveParameter">
             <el-button class="my-btn" v-for="(element, index) in parameter" :key="index">
               {{element.name}}
             </el-button>
@@ -43,7 +43,7 @@
             <div class="relation-item" v-if="element.type === 'parameter'">
               <div class="relation-item-inner">
                 <button class="close-btn" @click="remove(index)">X</button>
-                <el-select v-model="value" placeholder="请选择">
+                <el-select v-model="value[index]" placeholder="请选择">
                   <el-option
                     v-for="item in element.options"
                     :key="item.value"
@@ -91,7 +91,7 @@
         parameterStatus: false,
         logicStatus: false,
         numberStatus: false,
-        value: '',
+        value: [''],
         parameter: [
           {
             type: 'parameter',
@@ -140,6 +140,9 @@
     methods: {
       remove(index) {
         this.relation.splice(index, 1)
+      },
+      moveParameter(){
+        this.$data.$set(value2,false)
       }
     }
   }
